@@ -10,7 +10,7 @@ import {
   Platform,
 } from 'react-native';
 
-// Özel OyunButonu Bileşeni (Pressable, basılı animasyon, pasiflik, onLongPress desteği)
+// Ozel OyunButonu Bileseni (Pressable, basili animasyon, pasiflik, onLongPress destegi)
 function OyunButonu({ baslik, renk = '#2563eb', onPress, onLongPress, pasif = false }) {
   return (
     <Pressable
@@ -33,7 +33,7 @@ export default function App() {
   const [aktifSekme, setAktifSekme] = useState('tahmin'); // 'tahmin' | 'savas' | 'form'
 
   // ==========================================
-  // 1. BÖLÜM: SAYI TAHMİN OYUNU (ANA ÖDEV)
+  // 1. BOLUM: SAYI TAHMIN OYUNU (ANA ODEV)
   // ==========================================
   const [gizliSayi, setGizliSayi] = useState(() => Math.floor(Math.random() * 100) + 1);
   const [tahminGirdisi, setTahminGirdisi] = useState('');
@@ -48,9 +48,9 @@ export default function App() {
 
     const sayi = Number(tahminGirdisi.trim());
 
-    // Doğrulama (Validasyon)
+    // Dogrulama (Validasyon)
     if (tahminGirdisi.trim() === '' || isNaN(sayi) || sayi < 1 || sayi > 100) {
-      setMesaj('⚠️ Lütfen 1 ile 100 arasında geçerli bir sayı girin!');
+      setMesaj('⚠️ Lutfen 1 ile 100 arasinda gecerli bir sayi girin!');
       setMesajTuru('hata');
       return;
     }
@@ -59,18 +59,18 @@ export default function App() {
     setDenemeSayisi(yeniDeneme);
 
     if (sayi < gizliSayi) {
-      setMesaj(`Daha büyük! ⬆️ (Tahminin: ${sayi})`);
+      setMesaj(`Daha buyuk! ⬆️ (Tahminin: ${sayi})`);
       setMesajTuru('ipucu');
-      setTahminGecmisi((prev) => [`${sayi} → Daha büyük! ⬆️`, ...prev]);
+      setTahminGecmisi((prev) => [`${sayi} → Daha buyuk! ⬆️`, ...prev]);
     } else if (sayi > gizliSayi) {
-      setMesaj(`Daha küçük! ⬇️ (Tahminin: ${sayi})`);
+      setMesaj(`Daha kucuk! ⬇️ (Tahminin: ${sayi})`);
       setMesajTuru('ipucu');
-      setTahminGecmisi((prev) => [`${sayi} → Daha küçük! ⬇️`, ...prev]);
+      setTahminGecmisi((prev) => [`${sayi} → Daha kucuk! ⬇️`, ...prev]);
     } else {
       setMesaj(`🎉 Bildin! 🥳 Tebrikler! (${yeniDeneme}. denemede buldun)`);
       setMesajTuru('basari');
       setOyunBitti(true);
-      setTahminGecmisi((prev) => [`${sayi} → BİLDİN! 🏆`, ...prev]);
+      setTahminGecmisi((prev) => [`${sayi} → BILDIN! 🏆`, ...prev]);
     }
 
     // Her tahminden sonra kutuyu temizle
@@ -88,26 +88,26 @@ export default function App() {
   };
 
   // ==========================================
-  // 2. BÖLÜM: SAVAŞ EKRANI (UYGULAMA 2)
+  // 2. BOLUM: SAVAS EKRANI (UYGULAMA 2)
   // ==========================================
   const [dusmanCan, setDusmanCan] = useState(100);
   const [mana, setMana] = useState(60);
-  const [savasMesaji, setSavasMesaji] = useState('Düşmanla karşılaştın. Hamleni seç!');
+  const [savasMesaji, setSavasMesaji] = useState('Dusmanla karsilastin. Hamleni sec!');
 
   const saldir = () => {
     setDusmanCan((prev) => Math.max(0, prev - 15));
-    setSavasMesaji('⚔️ Kılıcınla vurdun! Düşmana 15 hasar verdin.');
+    setSavasMesaji('⚔️ Kilicinla vurdun! Dusmana 15 hasar verdin.');
   };
 
   const savun = () => {
-    setSavasMesaji('🛡️ Savunma pozisyonu aldın. Gelen hasar engellendi.');
+    setSavasMesaji('🛡️ Savunma pozisyonu aldin. Gelen hasar engellendi.');
   };
 
   const buyuYap = () => {
     if (mana >= 30) {
       setMana((prev) => prev - 30);
       setDusmanCan((prev) => Math.max(0, prev - 35));
-      setSavasMesaji('🔥 Ateş topu büyüsü fırlattın! Düşmana 35 hasar verdin.');
+      setSavasMesaji('🔥 Ates topu buyusu firlattin! Dusmana 35 hasar verdin.');
     }
   };
 
@@ -119,11 +119,11 @@ export default function App() {
   const savasiSifirla = () => {
     setDusmanCan(100);
     setMana(60);
-    setSavasMesaji('Yeni bir düşman belirdi!');
+    setSavasMesaji('Yeni bir dusman belirdi!');
   };
 
   // ==========================================
-  // 3. BÖLÜM: KARAKTER FORMU (UYGULAMA 3)
+  // 3. BOLUM: KARAKTER FORMU (UYGULAMA 3)
   // ==========================================
   const [formAd, setFormAd] = useState('');
   const [formYas, setFormYas] = useState('');
@@ -131,24 +131,24 @@ export default function App() {
   const [formHata, setFormHata] = useState('');
   const [karakterOlusturuldu, setKarakterOlusturuldu] = useState(false);
   const siniflar = [
-    { ad: 'Savaşçı', ikon: '⚔️' },
-    { ad: 'Büyücü', ikon: '🔮' },
-    { ad: 'Okçu', ikon: '🏹' },
-    { ad: 'Şifacı', ikon: '✨' }, // Ödev bonus seçeneği
+    { ad: 'Savasci', ikon: '⚔️' },
+    { ad: 'Buyucu', ikon: '🔮' },
+    { ad: 'Okcu', ikon: '🏹' },
+    { ad: 'Sifaci', ikon: '✨' },
   ];
 
   const karakteriOlustur = () => {
     if (formAd.trim() === '') {
-      setFormHata('Lütfen karakter adını yazın.');
+      setFormHata('Lutfen karakter adini yazin.');
       return;
     }
     const yasSayi = Number(formYas);
     if (isNaN(yasSayi) || yasSayi < 10 || yasSayi > 99) {
-      setFormHata('Yaş 10 ile 99 arasında bir sayı olmalıdır.');
+      setFormHata('Yas 10 ile 99 arasinda bir sayi olmalidir.');
       return;
     }
     if (formSinif === '') {
-      setFormHata('Lütfen bir karakter sınıfı seçin.');
+      setFormHata('Lutfen bir karakter sinifi secin.');
       return;
     }
 
@@ -161,14 +161,14 @@ export default function App() {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       style={styles.container}
     >
-      {/* Üst Sekme Seçici */}
+      {/* Ust Sekme Secici */}
       <View style={styles.sekmeKapsayici}>
         <Pressable
           style={[styles.sekmeButon, aktifSekme === 'tahmin' && styles.sekmeAktif]}
           onPress={() => setAktifSekme('tahmin')}
         >
           <Text style={[styles.sekmeYazi, aktifSekme === 'tahmin' && styles.sekmeYaziAktif]}>
-            🎯 Sayı Tahmini
+            🎯 Sayi Tahmini
           </Text>
         </Pressable>
 
@@ -177,7 +177,7 @@ export default function App() {
           onPress={() => setAktifSekme('savas')}
         >
           <Text style={[styles.sekmeYazi, aktifSekme === 'savas' && styles.sekmeYaziAktif]}>
-            ⚔️ Savaş
+            ⚔️ Savas
           </Text>
         </Pressable>
 
@@ -192,25 +192,22 @@ export default function App() {
       </View>
 
       <ScrollView contentContainerStyle={styles.icerik}>
-        {/* ========================================================= */}
-        {/* SEKME 1: SAYI TAHMİN OYUNU (6. HAFTA ANA ÖDEVİ)           */}
-        {/* ========================================================= */}
+        {/* SEKME 1: SAYI TAHMIN OYUNU (6. HAFTA ANA ODEV) */}
         {aktifSekme === 'tahmin' && (
           <View style={styles.kart}>
-            <Text style={styles.kartBaslik}>🎯 1 - 100 Sayı Tahmin Oyunu</Text>
+            <Text style={styles.kartBaslik}>🎯 1 - 100 Sayi Tahmin Oyunu</Text>
             <Text style={styles.aciklama}>
-              Aklımdan 1 ile 100 arasında gizli bir sayı tuttum. Tahminini yaz ve butona bas!
+              Aklimdan 1 ile 100 arasinda gizli bir sayi tuttum. Tahminini yaz ve butona bas!
             </Text>
 
             <View style={styles.denemeRozeti}>
-              <Text style={styles.denemeYazi}>Yapılan Tahmin Sayısı: {denemeSayisi}</Text>
+              <Text style={styles.denemeYazi}>Yapilan Tahmin Sayisi: {denemeSayisi}</Text>
             </View>
 
-            {/* Sayı Giriş Kutusu */}
             <TextInput
               value={tahminGirdisi}
               onChangeText={setTahminGirdisi}
-              placeholder="Tahmininizi girin (örn. 42)"
+              placeholder="Tahmininizi girin (orn. 42)"
               keyboardType="numeric"
               maxLength={3}
               editable={!oyunBitti}
@@ -218,7 +215,6 @@ export default function App() {
               style={styles.input}
             />
 
-            {/* Tahmin Butonu */}
             {!oyunBitti ? (
               <OyunButonu baslik="Tahmin Et 🎲" renk="#2563eb" onPress={tahminEt} />
             ) : (
@@ -229,7 +225,6 @@ export default function App() {
               />
             )}
 
-            {/* Sonuç & İpucu Mesajı */}
             {mesaj !== '' && (
               <View
                 style={[
@@ -252,10 +247,9 @@ export default function App() {
               </View>
             )}
 
-            {/* Tahmin Geçmişi Listesi */}
             {tahminGecmisi.length > 0 && (
               <View style={styles.gecmisKutusu}>
-                <Text style={styles.gecmisBaslik}>📜 Tahmin Geçmişi:</Text>
+                <Text style={styles.gecmisBaslik}>📜 Tahmin Gecmisi:</Text>
                 {tahminGecmisi.map((item, index) => (
                   <Text key={index} style={styles.gecmisSatir}>
                     • {item}
@@ -266,17 +260,14 @@ export default function App() {
           </View>
         )}
 
-        {/* ========================================================= */}
-        {/* SEKME 2: SAVAŞ EKRANI (UYGULAMA 2)                         */}
-        {/* ========================================================= */}
+        {/* SEKME 2: SAVAS EKRANI */}
         {aktifSekme === 'savas' && (
           <View style={styles.kart}>
-            <Text style={styles.kartBaslik}>⚔️ Savaş Arenası</Text>
+            <Text style={styles.kartBaslik}>⚔️ Savas Arenasi</Text>
             
-            {/* Düşman Canı & Barı */}
             <View style={styles.barKapsayici}>
               <View style={styles.barBilgi}>
-                <Text style={styles.barEtiket}>👹 Düşman Canı:</Text>
+                <Text style={styles.barEtiket}>👹 Dusman Cani:</Text>
                 <Text style={styles.barDeger}>{dusmanCan} / 100</Text>
               </View>
               <View style={styles.barDis}>
@@ -284,10 +275,9 @@ export default function App() {
               </View>
             </View>
 
-            {/* Mana Barı */}
             <View style={styles.barKapsayici}>
               <View style={styles.barBilgi}>
-                <Text style={styles.barEtiket}>🔮 Oyuncu Manası:</Text>
+                <Text style={styles.barEtiket}>🔮 Oyuncu Manasi:</Text>
                 <Text style={styles.barDeger}>{mana} / 100</Text>
               </View>
               <View style={styles.barDis}>
@@ -295,24 +285,23 @@ export default function App() {
               </View>
             </View>
 
-            {/* Savaş Durum Mesajı */}
             <View style={styles.savasMesajKutusu}>
               <Text style={styles.savasMesajYazi}>
-                {dusmanCan === 0 ? '🏆 ZAFER! Düşmanı alt ettin!' : savasMesaji}
+                {dusmanCan === 0 ? '🏆 ZAFER! Dusmani alt ettin!' : savasMesaji}
               </Text>
             </View>
 
             {dusmanCan > 0 ? (
               <View style={styles.butonGrup}>
-                <OyunButonu baslik="🗡️ Saldır (15 Hasar)" renk="#dc2626" onPress={saldir} />
+                <OyunButonu baslik="🗡️ Saldir (15 Hasar)" renk="#dc2626" onPress={saldir} />
                 <OyunButonu
-                  baslik="🛡️ Savun (Basılı Tut: Kalkan!)"
+                  baslik="🛡️ Savun (Basili Tut: Kalkan!)"
                   renk="#2563eb"
                   onPress={savun}
-                  onLongPress={() => setSavasMesaji('🛡️ Kalkanı kaldırdın! (Uzun basma tetiklendi)')}
+                  onLongPress={() => setSavasMesaji('🛡️ Kalkani kaldirdin! (Uzun basma tetiklendi)')}
                 />
                 <OyunButonu
-                  baslik="🔥 Büyü (35 Hasar - 30 Mana)"
+                  baslik="🔥 Buyu (35 Hasar - 30 Mana)"
                   renk="#7c3aed"
                   pasif={mana < 30}
                   onPress={buyuYap}
@@ -320,40 +309,38 @@ export default function App() {
                 <OyunButonu baslik="🌿 Dinlen (+25 Mana)" renk="#16a34a" onPress={dinlen} />
               </View>
             ) : (
-              <OyunButonu baslik="Yeni Savaş Başlat 🔄" renk="#059669" onPress={savasiSifirla} />
+              <OyunButonu baslik="Yeni Savas Baslat 🔄" renk="#059669" onPress={savasiSifirla} />
             )}
           </View>
         )}
 
-        {/* ========================================================= */}
-        {/* SEKME 3: KARAKTER OLUŞTURMA FORMU (UYGULAMA 3)             */}
-        {/* ========================================================= */}
+        {/* SEKME 3: KARAKTER FORMU */}
         {aktifSekme === 'form' && (
           <View style={styles.kart}>
             {!karakterOlusturuldu ? (
               <>
-                <Text style={styles.kartBaslik}>🛡️ Yeni Karakter Oluştur</Text>
+                <Text style={styles.kartBaslik}>🛡️ Yeni Karakter Olustur</Text>
 
-                <Text style={styles.inputEtiket}>Karakter Adı</Text>
+                <Text style={styles.inputEtiket}>Karakter Adi</Text>
                 <TextInput
                   value={formAd}
                   onChangeText={setFormAd}
-                  placeholder="Örn. Gölge Avcısı"
+                  placeholder="Orn. Golge Avcisi"
                   maxLength={16}
                   style={styles.input}
                 />
 
-                <Text style={styles.inputEtiket}>Yaş (10 - 99)</Text>
+                <Text style={styles.inputEtiket}>Yas (10 - 99)</Text>
                 <TextInput
                   value={formYas}
                   onChangeText={setFormYas}
-                  placeholder="Örn. 24"
+                  placeholder="Orn. 24"
                   keyboardType="numeric"
                   maxLength={2}
                   style={styles.input}
                 />
 
-                <Text style={styles.inputEtiket}>Sınıf Seçimi</Text>
+                <Text style={styles.inputEtiket}>Sinif Secimi</Text>
                 <View style={styles.seceneklerGrid}>
                   {siniflar.map((item) => (
                     <Pressable
@@ -380,27 +367,27 @@ export default function App() {
                 {formHata !== '' && <Text style={styles.hataMetni}>⚠️ {formHata}</Text>}
 
                 <OyunButonu
-                  baslik="Karakteri Oluştur ✨"
+                  baslik="Karakteri Olustur ✨"
                   renk="#16a34a"
                   onPress={karakteriOlustur}
                 />
               </>
             ) : (
               <View style={styles.ozetKartKapsayici}>
-                <Text style={styles.ozetTebrik}>🎉 Karakter Başarıyla Oluşturuldu!</Text>
+                <Text style={styles.ozetTebrik}>🎉 Karakter Basariyla Olusturuldu!</Text>
                 <View style={styles.karakterRozeti}>
                   <Text style={styles.karakterDevIkon}>
                     {siniflar.find((s) => s.ad === formSinif)?.ikon || '🛡️'}
                   </Text>
                   <Text style={styles.karakterBaslik}>{formAd}</Text>
                   <Text style={styles.karakterAlt}>
-                    {formSinif} • {formYas} Yaşında
+                    {formSinif} • {formYas} Yasinda
                   </Text>
-                  <Text style={styles.karakterDurum}>Seviye 1 • Maceraya Hazır!</Text>
+                  <Text style={styles.karakterDurum}>Seviye 1 • Maceraya Hazir!</Text>
                 </View>
 
                 <OyunButonu
-                  baslik="Yeni Karakter Oluştur 🔄"
+                  baslik="Yeni Karakter Olustur 🔄"
                   renk="#2563eb"
                   onPress={() => {
                     setFormAd('');
@@ -576,7 +563,6 @@ const styles = StyleSheet.create({
     color: '#cbd5e1',
     marginVertical: 2,
   },
-  // Savaş Ekranı Stilleri
   barKapsayici: {
     marginBottom: 14,
   },
@@ -623,7 +609,6 @@ const styles = StyleSheet.create({
   butonGrup: {
     gap: 4,
   },
-  // Form Stilleri
   seceneklerGrid: {
     flexDirection: 'row',
     gap: 8,
